@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { Counter } from './components/Counter';
-
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root');
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+const root = createRoot(container!);
 root.render(
- <div><Counter/></div>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
 );
