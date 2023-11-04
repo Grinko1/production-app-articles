@@ -11,6 +11,11 @@ const MainPage = () => {
       {t('Тестовый пример')}
       <hr />
       {t('Главная страница')}
+      <form action="">
+        <input type="text" />
+        <div></div>
+        <span>sdsdfsdf</span>
+      </form>
     </div>
   );
 };
