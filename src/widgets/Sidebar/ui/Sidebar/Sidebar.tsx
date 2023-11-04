@@ -11,15 +11,15 @@ interface SidebarProps {
 export const Sidebar = memo((props: SidebarProps) => {
   const { className } = props;
   const [collapsed, setCollapset] = useState(false);
-  const onToggle = () => {
-    setCollapset( prev => !prev);
+  const onToggle = (): void => {
+    setCollapset((prev) => !prev);
   };
   return (
     <div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
       <button onClick={onToggle}>toggle</button>
       <div className={cls.switchers}>
-              <ThemeSwitcher/>
-              <LangSwitcher className={cls.lang}/>
+        <ThemeSwitcher />
+        <LangSwitcher className={cls.lang} />
       </div>
     </div>
   );

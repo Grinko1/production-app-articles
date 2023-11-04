@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom';
 import cls from './Navbar.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
-
 
 interface NavbarProps {
   className?: string;
@@ -11,7 +9,6 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
-
       <div className={cls.links}>
         <AppLink to={AppRoutes.MAIN} theme={AppLinkTheme.SECONDARY} className={cls.mainLink}>
           MainPage

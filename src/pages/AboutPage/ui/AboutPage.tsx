@@ -1,11 +1,9 @@
-
-
 const AboutPage = () => {
-    return (
+  return (
         <div>
             AboutPage
         </div>
-    );
+  );
 };
 
 export default AboutPage;
