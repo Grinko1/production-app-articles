@@ -20,7 +20,6 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
       theme={ButtonTheme.CLEAR}
       className={classNames(cls.LangSwitcher, {}, [className])}>
       {t('Язык')}
-      {t('dsf')}
     </Button>
   );
 });
