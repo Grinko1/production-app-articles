@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended'],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended'],
   overrides: [
     {
       env: {
@@ -20,7 +20,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', '@typescript-eslint', 'i18next'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 0,
@@ -49,6 +49,7 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-floating-promises': 'warn',
+    'i18next/no-literal-string': [2, {markUpOnly:true}],
   },
   globals: {
     _IS_DEV_: true,
