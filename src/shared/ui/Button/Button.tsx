@@ -1,33 +1,79 @@
-import { type ButtonHTMLAttributes, type ReactNode, memo } from 'react';
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
+
 import cls from './Button.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 
 export enum ButtonTheme {
-  CLEAR = 'clear',
-  CLEAR_INVERTED = 'clearInverted',
-  OUTLINE = 'outline',
-  OUTLINE_RED = 'outline_red',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'backgroundInverted',
 }
 
 export enum ButtonSize {
-  M = 'size_m',
-  L = 'size_l',
-  XL = 'size_xl',
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl',
 }
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: ReactNode;
-  theme?: ButtonTheme;
-  size?: ButtonSize;
+    className?: string;
+    /**
+     * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+     */
+    theme?: ButtonTheme;
+    /**
+     * Флаг, делающий кнопку квадратной
+     */
+    square?: boolean;
+    /**
+     * Размер кнопки в соответствии с дизайн системой
+     */
+    size?: ButtonSize;
+    /**
+     * Флаг, отвечающий за работу кнопки
+     */
+    disabled?: boolean;
+    /**
+     * Содержимое кнопки
+     */
+    children?: ReactNode;
+    /**
+     * Увеличивает кнопку на всю свободную ширину
+     */
+    fullWidth?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
-  const { className, children, theme = ButtonTheme.OUTLINE, size = ButtonSize.M, ...otherProps } = props;
-  return (
-    <button className={classNames(cls.Button, {}, [className, cls[theme], cls[size]])} {...otherProps}>
-      {children}
-    </button>
-  );
+    const {
+        className,
+        children,
+        theme = ButtonTheme.OUTLINE,
+        square,
+        disabled,
+        fullWidth,
+        size = ButtonSize.M,
+        ...otherProps
+    } = props;
+
+    const mods: Mods = {
+        [cls[theme]]: true,
+        [cls.square]: square,
+        [cls[size]]: true,
+        [cls.disabled]: disabled,
+        [cls.fullWidth]: fullWidth,
+    };
+
+    return (
+        <button
+            type="button"
+            className={classNames(cls.Button, mods, [className])}
+            disabled={disabled}
+            {...otherProps}
+        >
+            {children}
+        </button>
+    );
 });
