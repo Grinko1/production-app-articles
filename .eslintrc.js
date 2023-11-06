@@ -50,8 +50,8 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-floating-promises': 'warn',
-    'i18next/no-literal-string': [2, { markUpOnly: true }],
-    'max-len': ['warn', { ingnoreComments: true }],
+    'i18next/no-literal-string': [2, { markUpOnly: true, ignoreAttribute: ['data-testid'] }],
+    'max-len': ['warn', { ignoreComments: true, code: 125 }],
   },
   globals: {
     _IS_DEV_: true,

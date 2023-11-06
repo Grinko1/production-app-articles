@@ -8,10 +8,10 @@ i18n.use(initReactI18next).init({
   debug: false,
 
   interpolation: {
-    escapeValue: false, // not needed for react!!
+    escapeValue: false // not needed for react!!
   },
 
-  resources: { ru: { translations: {} } },
+  resources: { ru: { translations: {} } }
 });
 
 export default i18n;

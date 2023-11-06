@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
+import { Component, type ErrorInfo, type ReactNode, Suspense } from 'react';
 import { PageError } from 'widgets/PageError';
 import { PageLoader } from 'widgets/PageLoader';
 
@@ -9,20 +9,20 @@ interface ErrorBoundaryState {
   hasError: boolean;
 }
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
+  constructor (props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError (error: Error) {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch (error: Error, errorInfo: ErrorInfo) {
     console.log(error, errorInfo);
   }
 
-  render() {
+  render () {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {

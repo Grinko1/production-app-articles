@@ -3,7 +3,6 @@ import cls from './PageError.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useTheme } from 'app/providers/themeProvider';
 
 interface PageErrorProps {
   className?: string;
@@ -14,8 +13,8 @@ export const PageError = memo((props: PageErrorProps) => {
   const { t } = useTranslation();
 
   const reloadPage = () => {
-    location.reload()
-  }
+    location.reload();
+  };
   return (
     <div className={classNames(cls.PageError, {}, [className, 'dark'])}>
       <p>{t('Произошла непредвиденная ошибка')}</p>
