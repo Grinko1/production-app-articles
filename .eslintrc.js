@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended'],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
   overrides: [
     {
       env: {
@@ -18,10 +18,13 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 0,
@@ -50,10 +53,51 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-floating-promises': 'warn',
-    'i18next/no-literal-string': [2, { markUpOnly: true, ignoreAttribute: ['data-testid'] }],
+    'i18next/no-literal-string': [
+      'warn',
+      {
+        markUpOnly: true,
+        ignoreAttribute: [
+          'as',
+          'role',
+          'data-testid',
+          'to',
+          'target',
+          'justify',
+          'align',
+          'border',
+          'direction',
+          'gap',
+          'fullscreen',
+          'feature',
+          'variant',
+          'color',
+          'size',
+          'wrap',
+        ],
+      },
+    ],
     'max-len': ['warn', { ignoreComments: true, code: 125 }],
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies,
+    'no-param-reassign': 'off',
+    'no-undef': 'off',
+    'react/no-array-index-key': 'off',
+    'arrow-body-style': 'off',
   },
+
   globals: {
     _IS_DEV_: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+        'max-len': 'off',
+      },
+    },
+  ],
 };
