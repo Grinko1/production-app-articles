@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LangSwitcher } from './LangSwitcher';
 
-
 const meta = {
   title: 'shared/LangSwitcher',
   component: LangSwitcher,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {}
 } satisfies Meta<typeof LangSwitcher>;
 
 export default meta;

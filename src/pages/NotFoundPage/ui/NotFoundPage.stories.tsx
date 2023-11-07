@@ -4,15 +4,14 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/themeProvider';
 import { NotFoundPage } from './NotFoundPage';
 
-
 const meta = {
   title: 'pages/NotFoundPage',
   component: NotFoundPage,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {}
 } satisfies Meta<typeof NotFoundPage>;
 
 export default meta;

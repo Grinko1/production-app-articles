@@ -1,4 +1,3 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import type webpack from 'webpack';
 import { type BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
@@ -9,7 +8,7 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
     use: 'ts-loader',
     exclude: /node_modules/
   };
-  const cssLoader = buildCssLoader(options.isDev)
+  const cssLoader = buildCssLoader(options.isDev);
   const svgLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,

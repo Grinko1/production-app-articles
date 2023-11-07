@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'standard-with-typescript',
+    'plugin:react/recommended',
+    'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -24,6 +29,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: ['config/jest/jestEmptyComponent.tsx'],
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
   rules: {
     'react/react-in-jsx-scope': 'off',

@@ -4,16 +4,14 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { Theme } from 'app/providers/themeProvider';
 import { MainPage } from '..';
 
-
-
 const meta = {
   title: 'pages/MainPage',
   component: MainPage,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {}
 } satisfies Meta<typeof MainPage>;
 
 export default meta;

@@ -7,12 +7,12 @@ const meta = {
   title: 'shared/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   },
   tags: ['autodocs'],
   argTypes: {
     // backgroundColor: { control: 'color' },
-  },
+  }
 
 } satisfies Meta<typeof Button>;
 
@@ -21,42 +21,42 @@ type Story = StoryObj<typeof meta>;
 
 export const Ouline: Story = {
   args: {
-    theme:ButtonTheme.OUTLINE,
-    children: 'Button',
-  },
+    theme: ButtonTheme.OUTLINE,
+    children: 'Button'
+  }
 };
 export const OulineDark: Story = {
   args: {
-    theme:ButtonTheme.OUTLINE,
-    children: 'Button',
-  },
+    theme: ButtonTheme.OUTLINE,
+    children: 'Button'
+  }
 };
-OulineDark.decorators = [ ThemeDecorator(Theme.DARK)]
+OulineDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const Secondary: Story = {
   args: {
-    theme:ButtonTheme.BACKGROUND,
-    children: 'Button',
-  },
+    theme: ButtonTheme.BACKGROUND,
+    children: 'Button'
+  }
 };
 
 export const SecondaryDark: Story = {
   args: {
-    theme:ButtonTheme.BACKGROUND,
-    children: 'Button',
-  },
+    theme: ButtonTheme.BACKGROUND,
+    children: 'Button'
+  }
 };
-SecondaryDark.decorators = [ ThemeDecorator(Theme.DARK)]
+SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 export const Large: Story = {
   args: {
     size: ButtonSize.XL,
-    children: 'Button',
-  },
+    children: 'Button'
+  }
 };
 
 export const Small: Story = {
   args: {
-    size:  ButtonSize.M,
-    children: 'Button',
-  },
+    size: ButtonSize.M,
+    children: 'Button'
+  }
 };

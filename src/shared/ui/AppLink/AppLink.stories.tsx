@@ -7,10 +7,10 @@ const meta = {
   title: 'shared/AppLink',
   component: AppLink,
   parameters: {
-    layout: 'center',
+    layout: 'center'
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {}
 } satisfies Meta<typeof AppLink>;
 
 export default meta;
@@ -20,45 +20,45 @@ export const Primary: Story = {
   args: {
     children: 'link',
     theme: AppLinkTheme.PRIMARY,
-    to: '/',
-  },
+    to: '/'
+  }
 };
 export const Secondary: Story = {
   args: {
     children: 'link',
     to: '/',
-    theme: AppLinkTheme.SECONDARY,
-  },
+    theme: AppLinkTheme.SECONDARY
+  }
 };
 export const Red: Story = {
   args: {
     children: 'link',
     to: '/',
-    theme: AppLinkTheme.RED,
-  },
+    theme: AppLinkTheme.RED
+  }
 };
 
 export const PrimaryDarkTheme: Story = {
   args: {
     children: 'link',
     theme: AppLinkTheme.PRIMARY,
-    to: '/',
-  },
+    to: '/'
+  }
 };
 PrimaryDarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
 export const SecondaryDarkTheme: Story = {
   args: {
     children: 'link',
     to: '/',
-    theme: AppLinkTheme.SECONDARY,
-  },
+    theme: AppLinkTheme.SECONDARY
+  }
 };
 SecondaryDarkTheme.decorators = [ThemeDecorator(Theme.DARK)];
 export const RedDarkTheme: Story = {
   args: {
     children: 'link',
     to: '/',
-    theme: AppLinkTheme.RED,
-  },
+    theme: AppLinkTheme.RED
+  }
 };
 RedDarkTheme.decorators = [ThemeDecorator(Theme.DARK)];

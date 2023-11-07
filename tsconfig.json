@@ -19,5 +19,16 @@
       "module": "CommonJS"
     }
   },
-  "include": ["./config/jest/setupTest.ts", "./src/**/*.ts", "./src/**/*.tsx"]
+  "include": [
+    "./config/jest/setupTest.ts",
+    "./config/jest/jestEmptyComponent.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "webpack.config.ts",
+    "./config/storybook/webpack.config.ts",
+    "./config/storybook/preview.tsx",
+    "./config/storybook/main.ts",
+    "./config/jest/jest.config.ts",
+    
+  ]
 }

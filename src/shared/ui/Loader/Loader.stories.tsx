@@ -3,15 +3,14 @@ import { Loader } from './Loader';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/themeProvider';
 
-
 const meta = {
   title: 'shared/Loader',
   component: Loader,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {}
 } satisfies Meta<typeof Loader>;
 
 export default meta;
