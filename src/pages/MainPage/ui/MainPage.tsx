@@ -15,7 +15,6 @@ const MainPage = () => {
       <form action="">
         <input type="text" />
         <div>New main text</div>
-     
       </form>
     </div>
   );
