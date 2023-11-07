@@ -1,8 +1,13 @@
-@import 'reset';
-@import 'themes/dark';
-@import 'themes/normal';
-@import 'themes/orange';
-@import 'variables/global';
+@import "reset";
+@import "themes/dark";
+@import "themes/normal";
+@import "themes/orange";
+@import "variables/global";
+
+body {
+  font: var(--font-m);
+  color: var(--primary-color);
+}
 
 .app {
   font: var(--font-m);
