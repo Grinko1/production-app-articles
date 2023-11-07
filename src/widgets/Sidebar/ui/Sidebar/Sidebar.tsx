@@ -36,12 +36,12 @@ export const Sidebar = memo((props: SidebarProps) => {
       <div className={cls.items}>
         <AppLink to={RoutePath.main} theme={AppLinkTheme.SECONDARY} className={cls.item}>
           <MainIcon className={cls.icon} />
-          <span className={cls.link}> {t('MainPage')}</span>
+          <span className={cls.link}> {t('Главная')}</span>
         </AppLink>
 
         <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.about} className={cls.item}>
           <AboutIcon className={cls.icon} />
-          <span className={cls.link}>{t('AboutPage')}</span>
+          <span className={cls.link}>{t('О сайте')}</span>
         </AppLink>
       </div>
       <div className={cls.switchers}>
