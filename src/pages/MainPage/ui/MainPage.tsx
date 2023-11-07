@@ -14,9 +14,6 @@ const MainPage = () => {
       {t('Главная страница')}
       <form action="">
         <input type="text" />
-        <div></div>
-        <span>sdsdfsdf</span>
-        <div>test</div>
       </form>
     </div>
   );

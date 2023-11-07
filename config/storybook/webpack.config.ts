@@ -14,7 +14,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.resolve?.modules?.push(paths.src);
   config.resolve?.extensions?.push('.ts', '.tsx');
 
-  // @ts-expect-error  must be check
   config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
     if ((rule.test as string).includes('svg')) {
       return { ...rule, exclude: /\.svg$/i };
