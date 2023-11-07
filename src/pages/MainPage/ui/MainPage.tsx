@@ -16,6 +16,7 @@ const MainPage = () => {
         <input type="text" />
         <div></div>
         <span>sdsdfsdf</span>
+        <div>test</div>
       </form>
     </div>
   );
