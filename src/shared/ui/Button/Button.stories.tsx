@@ -13,7 +13,6 @@ const meta = {
   argTypes: {
     // backgroundColor: { control: 'color' },
   }
-
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -33,20 +32,20 @@ export const OulineDark: Story = {
 };
 OulineDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const Secondary: Story = {
+export const BackgroundTheme: Story = {
   args: {
     theme: ButtonTheme.BACKGROUND,
     children: 'Button'
   }
 };
 
-export const SecondaryDark: Story = {
+export const BackgroundThemeDark: Story = {
   args: {
     theme: ButtonTheme.BACKGROUND,
     children: 'Button'
   }
 };
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
+BackgroundThemeDark.decorators = [ThemeDecorator(Theme.DARK)];
 export const Large: Story = {
   args: {
     size: ButtonSize.XL,
@@ -54,9 +53,38 @@ export const Large: Story = {
   }
 };
 
-export const Small: Story = {
+export const SizeM: Story = {
   args: {
     size: ButtonSize.M,
     children: 'Button'
+  }
+};
+
+export const SizeL: Story = {
+  args: {
+    size: ButtonSize.L,
+    children: 'Button'
+  }
+};
+export const SizeXL: Story = {
+  args: {
+    size: ButtonSize.XL,
+    children: 'Button'
+  }
+};
+
+export const SquareInverted: Story = {
+  args: {
+    size: ButtonSize.M,
+    children: 'Button',
+    theme: ButtonTheme.BACKGROUND_INVERTED
+  }
+};
+
+export const SquareBackground: Story = {
+  args: {
+    size: ButtonSize.M,
+    children: 'Button',
+    theme: ButtonTheme.BACKGROUND
   }
 };
