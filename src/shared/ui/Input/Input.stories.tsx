@@ -16,36 +16,24 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// export const Normal: Story = {
-//   args: {
-//     children: (
-//       <div>
-//         {' '}
-//         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius debitis
-//         nesciunt tempore optio maiores exercitationem vel quam itaque. Quis,
-//         debitis sed hic voluptatem sapiente unde iusto quia incidunt
-//         consequuntur modi, ducimus, quibusdam in magni? Quasi numquam amet,
-//         velit quod fugit, recusandae enim eveniet nesciunt blanditiis
-//         repellendus, corrupti excepturi error saepe.
-//       </div>
-//     ),
-//     isOpen: true
-//   }
-// };
-// export const Dark: Story = {
-//   args: {
-//     children: (
-//       <div>
-//         {' '}
-//         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius debitis
-//         nesciunt tempore optio maiores exercitationem vel quam itaque. Quis,
-//         debitis sed hic voluptatem sapiente unde iusto quia incidunt
-//         consequuntur modi, ducimus, quibusdam in magni? Quasi numquam amet,
-//         velit quod fugit, recusandae enim eveniet nesciunt blanditiis
-//         repellendus, corrupti excepturi error saepe.
-//       </div>
-//     ),
-//     isOpen: true
-//   }
-// };
-// Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const InputAutoFocusLight: Story = {
+  args: {
+    value: '',
+    autoFocus: true,
+    placeholder: 'input'
+  }
+};
+export const InputSimple: Story = {
+  args: {
+    value: '',
+    placeholder: 'input'
+  }
+};
+export const InputAutoFocusDark: Story = {
+  args: {
+    value: '',
+    autoFocus: true,
+    placeholder: 'input'
+  }
+};
+InputAutoFocusDark.decorators = [ThemeDecorator(Theme.DARK)];
