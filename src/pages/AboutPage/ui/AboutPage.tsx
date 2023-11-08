@@ -1,8 +1,11 @@
+import { Counter } from 'entities/Counter';
+
 const AboutPage = () => {
   return (
-        <div>
-            AboutPage
-        </div>
+    <div>
+      AboutPage
+      <Counter />
+    </div>
   );
 };
 

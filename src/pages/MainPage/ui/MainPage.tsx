@@ -1,4 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
+import { Counter } from 'entities/Counter';
 import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
@@ -15,6 +16,8 @@ const MainPage = () => {
       <form action="">
         <input type="text" />
         <div>New main text</div>
+        <h2>counter</h2>
+        <Counter />
       </form>
     </div>
   );
