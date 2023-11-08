@@ -17,6 +17,7 @@
       "    </div>",
       "  );",
       "});"
+      "",
     ],
     "description": "Custom React Component"
   }
