@@ -19,8 +19,7 @@ export const Modal = memo((props: ModalProps) => {
   const { theme } = useTheme();
   const mods: Mods = {
     [cls.opened]: isOpen,
-    [cls.isClosing]: isClosing,
-    [cls[theme]]: true
+    [cls.isClosing]: isClosing
   };
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -53,7 +52,7 @@ export const Modal = memo((props: ModalProps) => {
   }, [isOpen, onKeyDown]);
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className])}>
+      <div className={classNames(cls.Modal, mods, [className, theme])}>
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
