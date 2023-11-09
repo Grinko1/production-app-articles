@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { type UserSchema } from '../types/user';
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { type User, type UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
   authData: undefined
@@ -9,8 +9,9 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    increment: (state) => {},
-    decrement: (state) => {}
+    setAuthData: (state, action: PayloadAction<User>) => {
+      state.authData = action.payload;
+    }
   }
 });
 
