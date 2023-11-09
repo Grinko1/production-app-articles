@@ -2,20 +2,24 @@ import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { type StateSchema } from './StateScheme';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/authByUsername';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore (initialState?: StateSchema) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     counter: counterReducer,
-    user: userReducer,
-    login: loginReducer
+    user: userReducer
   };
 
-  return configureStore<StateSchema>({
+  const reducerManager = createReducerManager(rootReducer);
+
+  const store = configureStore<StateSchema>({
     reducer: rootReducer,
     devTools: true,
     preloadedState: initialState
   });
+  // @ts-expect-error sdfsdf
+  store.reducerManager = reducerManager;
+  return store;
 }
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

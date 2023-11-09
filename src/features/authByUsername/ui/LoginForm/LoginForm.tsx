@@ -1,11 +1,11 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import cls from './LoginForm.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from 'features/authByUsername/model/slice/loginSlice';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { loginActions, loginReducer } from 'features/authByUsername/model/slice/loginSlice';
 import {
   getError,
   getIsLoading,
@@ -14,12 +14,14 @@ import {
 } from 'features/authByUsername/model/selectors/getLoginData/getLoginData';
 import { loginByUsername } from 'features/authByUsername/model/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { type ReduxStoreWithManager } from 'app/providers/storeProvider';
+import { type StateSchemaKey } from 'app/providers/storeProvider/config/StateScheme';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = memo((props: LoginFormProps) => {
+const LoginForm = memo((props: LoginFormProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const username = useSelector(getUsername);
@@ -27,7 +29,11 @@ export const LoginForm = memo((props: LoginFormProps) => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
   const dispatch = useDispatch();
+  const store = useStore() as ReduxStoreWithManager;
 
+  useEffect(() => {
+    store.reducerManager.add('loginForm', loginReducer);
+  }, [store.reducerManager]);
   const onChangeUsername = useCallback(
     (newValue: string) => {
       dispatch(loginActions.setUsername(newValue));
@@ -60,3 +66,5 @@ export const LoginForm = memo((props: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;
