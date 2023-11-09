@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-includes */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import { type RuleSetRule } from 'webpack';
+import { DefinePlugin, type RuleSetRule } from 'webpack';
 import type webpack from 'webpack';
 import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
@@ -24,13 +24,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
     return rule;
   });
-  // config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-  //   if ((rule.test as string).includes('svg')) {
-  //     return { ...rule, exclude: /\.svg$/i };
-  //   }
-
-  //   return rule;
-  // });
 
   config.module.rules.push({
     test: /\.svg$/,
@@ -38,5 +31,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
   });
   config.module.rules.push(buildCssLoader(true));
 
+  config.module.rules.push(
+    // @ts-expect-error jsfgjsg
+    new DefinePlugin({
+      _IS_DEV_: true
+    })
+  );
   return config;
 };

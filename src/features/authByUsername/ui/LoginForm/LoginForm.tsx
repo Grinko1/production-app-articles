@@ -43,7 +43,7 @@ export const LoginForm = memo((props: LoginFormProps) => {
   );
   const onLogin = useCallback(() => {
     if (username !== '' && password !== '') {
-      // @ts-expect-error
+      // @ts-expect-error fdfdksf
       dispatch(loginByUsername({ username, password }));
     }
   }, [dispatch, password, username]);

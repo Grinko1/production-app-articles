@@ -17,6 +17,10 @@ export const loginSlice = createSlice({
     },
     setPassword: (state, { payload }: PayloadAction<string>) => {
       state.password = payload;
+    },
+    resetData: (state) => {
+      state.password = '';
+      state.username = '';
     }
   },
   extraReducers (builder) {
