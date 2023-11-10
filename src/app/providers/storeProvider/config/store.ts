@@ -1,5 +1,5 @@
 import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
-import { type StateSchema } from './StateScheme';
+import { type StateSchema } from './StateSchema';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
@@ -13,7 +13,7 @@ export function createReduxStore (initialState?: StateSchema) {
   const reducerManager = createReducerManager(rootReducer);
 
   const store = configureStore<StateSchema>({
-    reducer: rootReducer,
+    reducer: reducerManager.reduce,
     devTools: true,
     preloadedState: initialState
   });

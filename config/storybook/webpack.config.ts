@@ -31,8 +31,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
   });
   config.module.rules.push(buildCssLoader(true));
 
-  config.module.rules.push(
-    // @ts-expect-error jsfgjsg
+  config.plugins?.push(
     new DefinePlugin({
       _IS_DEV_: true
     })

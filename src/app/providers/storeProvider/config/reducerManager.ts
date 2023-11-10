@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
 import { type ReducersMapObject, combineReducers, type AnyAction } from 'redux';
-import { type StateSchemaKey, type StateSchema, type ReducerManager } from './StateScheme';
+import { type StateSchemaKey, type StateSchema, type ReducerManager } from './StateSchema';
 import { type Reducer } from '@reduxjs/toolkit';
 
 export function createReducerManager (initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
@@ -33,14 +33,12 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
     },
 
     // Adds a new reducer with the specified key
-    add: (key: StateSchema, reducer: Reducer) => {
-      // @ts-expect-error sdkgnskldgn
+    add: (key: StateSchemaKey, reducer: Reducer) => {
       if (!key || reducers[key]) {
         return;
       }
 
       // Add the reducer to the reducer mapping
-      // @ts-expect-error sdkgnskldgn
       reducers[key] = reducer;
 
       // Generate a new combined reducer

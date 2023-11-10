@@ -14,7 +14,7 @@ export interface StateSchema {
   user: UserSchema;
 
   // async
-  loginForm?: LoginSchema;
+  login?: LoginSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -26,6 +26,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
-  add: (key: StateSchema, reducer: Reducer) => void;
+  add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
 }
