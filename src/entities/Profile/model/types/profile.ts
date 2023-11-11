@@ -1,6 +1,6 @@
 import { type Country, type Currency } from 'shared/consts/common';
 
-export interface ProfileType {
+export interface Profile {
   first: string;
   lastname: string;
   age: 22;
@@ -12,7 +12,7 @@ export interface ProfileType {
 }
 
 export interface ProfileSchema {
-  data?: ProfileType;
+  data?: Profile;
   isLoading: boolean;
   error?: string;
   readonly: boolean;

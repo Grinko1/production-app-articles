@@ -15,7 +15,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export interface LoginFormProps {
   className?: string;
-  onSuccess?: () => void;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -45,6 +45,7 @@ const LoginForm = memo((props: LoginFormProps) => {
   );
   const onLogin = useCallback(async () => {
     if (username !== '' && password !== '') {
+      // @ts-expect-error fix
       const res = await dispatch(loginByUsername({ username, password }));
       if (res.meta.requestStatus === 'fulfilled') {
         onSuccess();

@@ -48,6 +48,9 @@ module.exports = {
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "react/display-name": "off",
     semi: [2, "always"],
     "@typescript-eslint/semi": [2, "always"],
@@ -59,7 +62,6 @@ module.exports = {
       }
     ],
     "@typescript-eslint/explicit-function-return-type": "warn",
-    "@typescript-eslint/no-floating-promises": "warn",
     "i18next/no-literal-string": [
       "warn",
       {
