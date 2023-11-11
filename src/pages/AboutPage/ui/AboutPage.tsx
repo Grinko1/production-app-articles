@@ -1,4 +1,5 @@
 import { Counter } from 'entities/Counter';
+import { memo } from 'react';
 
 const AboutPage = () => {
   return (
@@ -9,4 +10,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default memo(AboutPage);

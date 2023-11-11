@@ -1,4 +1,4 @@
-import { type ReactNode, memo, useState, useRef, useEffect, useCallback } from 'react';
+import { type ReactNode, useState, useRef, useEffect, useCallback } from 'react';
 import cls from './Modal.module.scss';
 import { type Mods, classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
@@ -12,7 +12,7 @@ interface ModalProps {
   lazy?: boolean;
 }
 
-export const Modal = memo((props: ModalProps) => {
+export const Modal = (props: ModalProps) => {
   const { className, children, isOpen = false, lazy, onClose } = props;
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -69,4 +69,4 @@ export const Modal = memo((props: ModalProps) => {
       </div>
     </Portal>
   );
-});
+};

@@ -12,5 +12,6 @@
   "Логин": "Username",
   "Пароль": "Password",
   "Форма авторизации": "Authorization form",
-  "Выйти": "Logout"
+  "Выйти": "Logout",
+  "Профиль": "Profile"
 }

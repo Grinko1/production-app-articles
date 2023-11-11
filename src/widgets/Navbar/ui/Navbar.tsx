@@ -26,7 +26,6 @@ export const Navbar = ({ className }: NavbarProps) => {
   const logoutHandler = useCallback(() => {
     dispatch(userActions.logout());
     dispatch(loginActions.resetData());
-    setIsAuthModal(false);
   }, [dispatch]);
   if (userData) {
     return (
