@@ -1,19 +1,13 @@
 /* eslint-disable no-multiple-empty-lines */
-import axios from 'axios';
 import { loginByUsername } from './loginByUsername';
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
-jest.mock('axios');
-// @ts-expect-error why true
-const mockedAxios = jest.mocked(axios, true);
-
 describe('loginByUsername.test description', () => {
   test('success', async () => {
     const userData = { username: '123', id: '1' };
-    mockedAxios.post.mockReturnValue(Promise.resolve({ data: userData }));
-
     const thunk = new TestAsyncThunk(loginByUsername);
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userData }));
     const result = await thunk.callThunk({ username: '123', password: '123' });
 
     expect(result.meta.requestStatus).toBe('fulfilled');
@@ -22,9 +16,9 @@ describe('loginByUsername.test description', () => {
     );
   });
   test('403 error', async () => {
-    mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
-
     const thunk = new TestAsyncThunk(loginByUsername);
+    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
+
     const result = await thunk.callThunk({ username: '123', password: '123' });
 
     expect(result.meta.requestStatus).toBe('rejected');

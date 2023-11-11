@@ -31,7 +31,7 @@ export const loginSlice = createSlice({
     builder.addCase(loginByUsername.fulfilled, (state, action) => {
       state.isLoading = false;
     });
-    builder.addCase(loginByUsername.rejected, (state, action: PayloadAction<string>) => {
+    builder.addCase(loginByUsername.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

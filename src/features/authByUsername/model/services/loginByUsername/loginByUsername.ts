@@ -24,7 +24,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
 
       return response.data;
     } catch (e) {
-      console.log(e.response.data.message);
+      // @ts-expect-error fix
       return rejectWithValue(e.response.data.message || 'unexpected error');
     }
   }

@@ -45,7 +45,6 @@ const LoginForm = memo((props: LoginFormProps) => {
   );
   const onLogin = useCallback(async () => {
     if (username !== '' && password !== '') {
-      // @ts-expect-error fix
       const res = await dispatch(loginByUsername({ username, password }));
       if (res.meta.requestStatus === 'fulfilled') {
         onSuccess();

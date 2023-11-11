@@ -16,7 +16,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (user) {
-      // @ts-expect-error fix
       dispatch(fetchProfileData(user.id || '1'));
     }
   }, [dispatch, user]);
