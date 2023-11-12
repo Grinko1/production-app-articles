@@ -31,12 +31,12 @@ export default ({ config }: { config: webpack.Configuration }) => {
     use: ['@svgr/webpack']
   });
   config.module?.rules.push(buildCssLoader(true));
-
   config.plugins?.push(
     new DefinePlugin({
       _IS_DEV_: true,
-      _API_: ''
+      _API_: 'http://localhost:8000'
     })
   );
+  console.log(config.plugins);
   return config;
 };
