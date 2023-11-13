@@ -1,3 +1,5 @@
+export { updateProfileData } from './model/services/fetchProfileData/updateProfileData';
+
 export {
   getProfileData,
   getProfileForm,
