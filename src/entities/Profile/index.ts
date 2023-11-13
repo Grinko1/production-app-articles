@@ -1,11 +1,12 @@
-export { updateProfileData } from './model/services/fetchProfileData/updateProfileData';
+export { updateProfileData } from './model/services/updateProfileData/updateProfileData';
 
 export {
   getProfileData,
   getProfileForm,
   getProfileError,
   getProfileIsLoading,
-  getProfileReadonly
+  getProfileReadonly,
+  getProfileValidateErrors
 } from './model/selectors/getProfileData/getProfileData';
 
 export { ProfileCard } from './ui/ProfileCard/ProfileCard';

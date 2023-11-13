@@ -5,6 +5,7 @@ import {
   getProfileForm,
   getProfileIsLoading,
   getProfileReadonly,
+  getProfileValidateErrors,
   profileActions,
   profileReducer
 } from 'entities/Profile';
@@ -18,6 +19,9 @@ import { getAuthData } from 'entities/User';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { type Currency } from 'entities/Currency/model/types/currency';
 import { type Country } from 'entities/Country';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
+import { ValidateProfileError } from 'entities/Profile/model/consts/consts';
+import { useTranslation } from 'react-i18next';
 const reducers: ReducersList = {
   profile: profileReducer
 };
@@ -29,6 +33,8 @@ const ProfilePage = () => {
   const error = useSelector(getProfileError);
   const dataForm = useSelector(getProfileForm);
   const readonly = useSelector(getProfileReadonly);
+  const validateErrors = useSelector(getProfileValidateErrors);
+  const { t } = useTranslation();
   useEffect(() => {
     if (user) {
       dispatch(fetchProfileData(user.id || '1'));
@@ -87,10 +93,20 @@ const ProfilePage = () => {
     },
     [dispatch]
   );
+  const validateErrorTranslates = {
+    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
+    [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст')
+  };
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(cls.ProfilePage, {}, [])}>
         <ProfilePageHeader />
+        {validateErrors?.map((err) => (
+          <Text key={err} theme={TextTheme.ERROR} text={validateErrorTranslates[err]} size={TextSize.L} />
+        ))}
         <ProfileCard
           data={dataForm}
           isLoading={isLoading}

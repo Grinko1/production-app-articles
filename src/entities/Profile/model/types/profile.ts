@@ -1,5 +1,7 @@
 import { type Country, type Currency } from 'shared/consts/common';
+import { type ValidateProfileError } from '../consts/consts';
 
+export enum validateProfileError {}
 export interface Profile {
   first?: string;
   lastname?: string;
@@ -16,5 +18,6 @@ export interface ProfileSchema {
   form?: Profile;
   isLoading: boolean;
   error?: string;
+  validateErrors?: ValidateProfileError[];
   readonly: boolean;
 }
