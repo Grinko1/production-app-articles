@@ -35,9 +35,13 @@ const ProfilePage = () => {
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
   const { t } = useTranslation();
+  console.log(_PROJECT_);
+
   useEffect(() => {
-    if (user) {
-      dispatch(fetchProfileData(user.id || '1'));
+    if (process.env._PROJECT_ === 'frontend') {
+      if (user) {
+        dispatch(fetchProfileData(user.id || '1'));
+      }
     }
   }, [dispatch, user]);
   const onChangeFirstname = useCallback(

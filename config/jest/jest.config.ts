@@ -32,7 +32,7 @@ export default {
     '\\.(s?css)$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
   },
-  globals: { _IS_DEV_: true, _API_: '' }
+  globals: { _IS_DEV_: true, _API_: '', _PROJECT_: 'jest' }
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 

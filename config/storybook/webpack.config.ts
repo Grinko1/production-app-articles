@@ -35,8 +35,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
     new DefinePlugin({
       _IS_DEV_: true,
       _API_: 'http://localhost:8000'
+      // _PROJECT_: 'storybook'
     })
   );
-  console.log(config.plugins);
+
   return config;
 };
