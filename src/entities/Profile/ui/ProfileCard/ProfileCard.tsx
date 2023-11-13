@@ -111,14 +111,14 @@ export const ProfileCard = memo((props: ProfileProps) => {
         />
         <Input
           value={data?.username}
-          placeholder={t('Введите имя пользователя')}
+          placeholder={t('Имя пользователя')}
           className={cls.input}
           onChange={onChangeUsername}
           readonly={readonly}
         />
         <Input
           value={data?.avatar}
-          placeholder={t('Введите ссылку на аватар')}
+          placeholder={t('Ссылка на аватар')}
           className={cls.input}
           onChange={onChangeAvatar}
           readonly={readonly}

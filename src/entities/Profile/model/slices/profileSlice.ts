@@ -24,10 +24,6 @@ export const profileSlice = createSlice({
     cancelEdit: (state) => {
       state.readonly = true;
       state.form = state.data;
-    },
-    saveNewProfileData: (state) => {
-      state.data = state.form;
-      state.readonly = true;
     }
   },
   extraReducers (builder) {
