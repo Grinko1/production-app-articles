@@ -22,6 +22,7 @@ import { type Country } from 'entities/Country';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/consts/consts';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'widgets/Page/Page';
 const reducers: ReducersList = {
   profile: profileReducer
 };
@@ -105,7 +106,7 @@ const ProfilePage = () => {
   };
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ProfilePage, {}, [])}>
+      <Page className={classNames(cls.ProfilePage, {}, [])}>
         <ProfilePageHeader />
         {validateErrors?.map((err) => (
           <Text key={err} theme={TextTheme.ERROR} text={validateErrorTranslates[err]} size={TextSize.L} />
@@ -124,7 +125,7 @@ const ProfilePage = () => {
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

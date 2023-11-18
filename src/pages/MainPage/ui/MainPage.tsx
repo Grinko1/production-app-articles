@@ -2,6 +2,7 @@
 import { Counter } from 'entities/Counter';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'widgets/Page/Page';
 
 const MainPage = () => {
   const { t, i18n } = useTranslation();
@@ -9,7 +10,7 @@ const MainPage = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
   };
   return (
-    <div className="main">
+    <Page>
       <button onClick={toggle}>tr</button>
       {t('Тестовый пример')}
       <hr />
@@ -20,7 +21,7 @@ const MainPage = () => {
         <h2>counter</h2>
         <Counter />
       </form>
-    </div>
+    </Page>
   );
 };
 

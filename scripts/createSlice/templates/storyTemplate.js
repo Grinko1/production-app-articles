@@ -6,8 +6,6 @@ import { ${componentName} } from './${componentName}';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 
-import { ${componentName} } from './${componentName}';
-
 const meta = {
     title: '${layer}/${componentName}',
     component: ${componentName},
