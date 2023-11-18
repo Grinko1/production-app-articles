@@ -42,13 +42,7 @@ export const ProfileCard = memo((props: ProfileProps) => {
     onChangeCountry,
     onChangeCurrency
   } = props;
-  // const validateErrorTranslates = {
-  //   [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
-  //   [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
-  //   [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
-  //   [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
-  //   [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст')
-  // };
+
   const { t } = useTranslation();
   if (isLoading) {
     return (

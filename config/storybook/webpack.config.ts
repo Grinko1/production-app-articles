@@ -33,9 +33,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.module?.rules.push(buildCssLoader(true));
   config.plugins?.push(
     new DefinePlugin({
-      _IS_DEV_: true,
-      _API_: 'http://localhost:8000'
-      // _PROJECT_: 'storybook'
+      _IS_DEV_: JSON.stringify(true),
+      _API_: JSON.stringify('https://testapi.ru'),
+      _PROJECT_: JSON.stringify('storybook')
     })
   );
 

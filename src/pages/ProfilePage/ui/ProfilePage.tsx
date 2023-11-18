@@ -35,10 +35,9 @@ const ProfilePage = () => {
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
   const { t } = useTranslation();
-  console.log(_PROJECT_);
 
   useEffect(() => {
-    if (process.env._PROJECT_ === 'frontend') {
+    if (_PROJECT_ !== 'storybook') {
       if (user) {
         dispatch(fetchProfileData(user.id || '1'));
       }
