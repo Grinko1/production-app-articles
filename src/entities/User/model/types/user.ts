@@ -8,4 +8,5 @@ type Roles = 'ADMIN' | 'USER' | 'MANAGER';
 
 export interface UserSchema {
   authData?: User;
+  _inited: boolean;
 }
