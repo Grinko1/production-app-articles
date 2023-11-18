@@ -9,7 +9,7 @@ const MainPage = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
   };
   return (
-    <div>
+    <div style={{ color: 'red' }}>
       <button onClick={toggle}>tr</button>
       {t('Тестовый пример')}
       <hr />
