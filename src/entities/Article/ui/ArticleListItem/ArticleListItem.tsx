@@ -14,7 +14,7 @@ import { ArticleBlockType, ArticleView } from 'entities/Article/model/consts/con
 import { AppImage } from 'shared/ui/AppImage/AppImage';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { type Article, type ArticleTextBlock } from 'entities/Article/model/types/article';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleBlocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 export interface ArticleListItemProps {

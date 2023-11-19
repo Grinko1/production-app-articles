@@ -7,26 +7,38 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
 import cls from './ArticleDetails.module.scss';
-import { type Article, type ArticleBlock } from '../../model/types/article';
+import { type ArticleBlock } from '../../model/types/article';
 import { ArticleBlockType } from 'entities/Article/model/consts/consts';
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleCodeBlockComponent } from '../ArticleBlocks/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleBlocks/ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleBlocks/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Icon } from 'shared/ui/Icon';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { articleDetailsReducer } from '../../model/slices/articleDetailsSlice';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import {
+  getArticleDetailsData,
+  getArticleDetailsError,
+  getArticleDetailsIsLoading
+} from '../../model/selectors/getArticleDetails/getArticleDetails';
+import { useSelector } from 'react-redux';
 
 interface ArticleDetailsProps {
   className?: string;
   id: string;
 }
 
+const reducers: ReducersList = {
+  articleDetails: articleDetailsReducer
+};
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const { className, id } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  // const isLoading = useSelector(getArticleDetailsIsLoading);
-  // const article = useSelector(getArticleDetailsData);
-  // const error = useSelector(getArticleDetailsError);
+  const isLoading = useSelector(getArticleDetailsIsLoading);
+  const article = useSelector(getArticleDetailsData);
+  const error = useSelector(getArticleDetailsError);
 
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
@@ -43,24 +55,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   useEffect(() => {
     if (_PROJECT_ !== 'storybook') {
-      // dispatch(fetchArticleById(id));
+      dispatch(fetchArticleById(id));
     }
   }, [dispatch, id]);
 
   let content;
-  const isLoading = false;
-  const error = '';
-  const article: Article = {
-    id: '',
-    title: '',
-    user: { id: '1', username: 'name' },
-    subtitle: '',
-    img: '',
-    views: 0,
-    createdAt: '',
-    type: [],
-    blocks: []
-  };
+
   if (isLoading) {
     content = (
       <>
@@ -93,5 +93,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     );
   }
 
-  return <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>;
+  return (
+    <DynamicModuleLoader reducers={reducers}>
+      <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>;
+    </DynamicModuleLoader>
+  );
 });

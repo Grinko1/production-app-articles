@@ -1,3 +1,1 @@
-export interface ArticleDetailsPageSchema {
-    
-}
+export interface ArticleDetailsPageSchema {}
