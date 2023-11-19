@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/themeProvider';
-import ArticleDetailsPage from './ArticleDetailsPage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { type Article } from 'entities/Article';
+import { ArticleDetails } from './ArticleDetails';
+import { type Article } from 'entities/Article/model/types/article';
 import {
   ArticleBlockType,
   ArticleType
 } from 'entities/Article/model/consts/consts';
-
 const article: Article = {
   id: '1',
   title: 'Javascript news',
@@ -48,21 +47,24 @@ const article: Article = {
     }
   ]
 };
+
 const meta = {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/ArticleDetails',
+  component: ArticleDetails,
   parameters: {
     layout: 'fullscreen'
   },
   tags: ['autodocs'],
   argTypes: {}
-} satisfies Meta<typeof ArticleDetailsPage>;
+} satisfies Meta<typeof ArticleDetails>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-  args: {}
+  args: {
+    id: '1'
+  }
 };
 Normal.decorators = [
   StoreDecorator({
@@ -72,7 +74,9 @@ Normal.decorators = [
   })
 ];
 export const Dark: Story = {
-  args: {}
+  args: {
+    id: '1'
+  }
 };
 Dark.decorators = [
   StoreDecorator({
@@ -81,4 +85,32 @@ Dark.decorators = [
     }
   }),
   ThemeDecorator(Theme.DARK)
+];
+
+export const Loading: Story = {
+  args: {
+    id: '1'
+  }
+};
+Loading.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      isLoading: true
+    }
+  }),
+  ThemeDecorator(Theme.DARK)
+];
+
+export const Error: Story = {
+  args: {
+    id: '1'
+  }
+};
+
+Error.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      error: 'error'
+    }
+  })
 ];
