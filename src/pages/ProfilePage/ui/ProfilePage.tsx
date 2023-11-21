@@ -9,13 +9,12 @@ import {
   profileActions,
   profileReducer
 } from 'entities/Profile';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ProfilePage.module.scss';
 import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { type Currency } from 'entities/Currency/model/types/currency';
 import { type Country } from 'entities/Country';
@@ -23,27 +22,26 @@ import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/consts/consts';
 import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page/Page';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 const reducers: ReducersList = {
   profile: profileReducer
 };
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
-  const user = useSelector(getAuthData);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
   const dataForm = useSelector(getProfileForm);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
   const { t } = useTranslation();
+  const { id = '1' } = useParams();
 
-  useEffect(() => {
-    if (_PROJECT_ !== 'storybook') {
-      if (user) {
-        dispatch(fetchProfileData(user.id || '1'));
-      }
-    }
-  }, [dispatch, user]);
+  useInitialEffect(() => {
+    dispatch(fetchProfileData(id));
+  });
+
   const onChangeFirstname = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ first: value || '' }));

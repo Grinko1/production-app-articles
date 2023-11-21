@@ -5,11 +5,13 @@ import { type ReducersMapObject } from 'redux';
 import { loginReducer } from 'features/authByUsername';
 import { profileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
+import { addCommentFormReducer } from 'features/addNewCommentForm/model/slices/addCommentFormSlice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   login: loginReducer,
   profile: profileReducer,
-  articleDetails: articleDetailsReducer
+  articleDetails: articleDetailsReducer,
+  addCommentForm: addCommentFormReducer
 };
 export const StoreDecorator =
   (state: DeepPartial<StateSchema>, asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>) =>
