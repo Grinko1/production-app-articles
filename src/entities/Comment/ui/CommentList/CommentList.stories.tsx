@@ -1,36 +1,38 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
 
-export default {
-  title: 'entities/Comment/CommentList',
+const meta = {
+  title: 'entities/comment/CommentList',
   component: CommentList,
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  parameters: {
+    layout: 'fullscreen'
   },
-} as ComponentMeta<typeof CommentList>;
+  tags: ['autodocs'],
+  argTypes: {}
+} satisfies Meta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Normal = Template.bind({});
-Normal.args = {
-  comments: [
-    {
-      id: '1',
-      text: 'hello world',
-      user: { id: '1', username: 'Vasya' },
-    },
-    {
-      id: '2',
-      text: 'Comment 2',
-      user: { id: '1', username: 'Petya' },
-    },
-  ],
+export const Normal: Story = {
+  args: {
+    comments: [
+      {
+        id: '1',
+        text: 'hello world',
+        user: { id: '1', username: 'Vasya' }
+      },
+      {
+        id: '2',
+        text: 'Comment 2',
+        user: { id: '1', username: 'Petya' }
+      }
+    ]
+  }
 };
-
-export const Loading = Template.bind({});
-Loading.args = {
-  comments: [],
-  isLoading: true,
+export const Loading: Story = {
+  args: {
+    comments: [],
+    isLoading: true
+  }
 };
