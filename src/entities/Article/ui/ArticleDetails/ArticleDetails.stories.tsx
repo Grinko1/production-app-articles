@@ -49,7 +49,7 @@ const article: Article = {
 };
 
 const meta = {
-  title: 'entities/ArticleDetails',
+  title: 'entities/article/ArticleDetails',
   component: ArticleDetails,
   parameters: {
     layout: 'fullscreen'

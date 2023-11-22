@@ -4,7 +4,7 @@ import { type Article } from '../../model/types/article';
 import { ArticleView } from 'entities/Article/model/consts/consts';
 
 const meta = {
-  title: 'entities/ArticleListItem',
+  title: 'entities/article/ArticleListItem',
   component: ArticleListItem,
   parameters: {
     layout: 'fullscreen'
