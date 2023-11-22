@@ -1,3 +1,5 @@
+export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+
 export { ArticleView } from './model/consts/consts';
 export { ArticleList } from './ui/ArticleList/ArticleList';
 

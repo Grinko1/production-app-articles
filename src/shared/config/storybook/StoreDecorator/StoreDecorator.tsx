@@ -7,13 +7,15 @@ import { profileReducer } from 'entities/Profile';
 import { articleDetailsReducer } from 'entities/Article/model/slices/articleDetailsSlice';
 import { addCommentFormReducer } from 'features/addNewCommentForm/model/slices/addCommentFormSlice';
 import { articleDetailsCommentsReducer } from 'pages/ArticleDetailsPage/model/slices/articleDetailsComments';
+import { articlesPageReducer } from 'pages/ArticlesPage/model/slices/ArticlesPageSlice';
 
 const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   login: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
   addCommentForm: addCommentFormReducer,
-  ArticleDetailsComments: articleDetailsCommentsReducer
+  ArticleDetailsComments: articleDetailsCommentsReducer,
+  articlesPage: articlesPageReducer
 };
 export const StoreDecorator =
   (state: DeepPartial<StateSchema>, asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>) =>
