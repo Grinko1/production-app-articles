@@ -29,19 +29,19 @@ export const Navbar = ({ className }: NavbarProps) => {
   }, [dispatch]);
   if (userData) {
     return (
-      <div className={classNames(cls.Navbar, {}, [className])}>
+      <header className={classNames(cls.Navbar, {}, [className])}>
         <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={logoutHandler}>
           {t('Выйти')}
         </Button>
-      </div>
+      </header>
     );
   }
   return (
-    <div className={classNames(cls.Navbar, {}, [className])}>
+    <header className={classNames(cls.Navbar, {}, [className])}>
       <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenModal}>
         {t('Войти')}
       </Button>
       {isAuthModal && <LoginModal onClose={onCloseModal} isOpen={isAuthModal} />}
-    </div>
+    </header>
   );
 };

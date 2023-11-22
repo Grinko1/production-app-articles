@@ -9,6 +9,7 @@ import { type AxiosInstance } from 'axios';
 import { type ArticleDetailsSchema } from 'entities/Article/model/types/ArticleDetailsSchema';
 import { type CounterSchema } from 'entities/Counter';
 import { type ProfileSchema } from 'entities/Profile';
+import { type UISchema } from 'entities/UI';
 import { type UserSchema } from 'entities/User';
 import { type AddCommentFormSchema } from 'features/addNewCommentForm';
 import { type LoginSchema } from 'features/authByUsername';
@@ -18,7 +19,7 @@ import { type ArticlesPageSchema } from 'pages/ArticlesPage';
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
-
+  ui: UISchema;
   // async
   login?: LoginSchema;
   profile?: ProfileSchema;

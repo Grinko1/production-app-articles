@@ -4,12 +4,14 @@ import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
 import { $api } from 'shared/api/api';
+import { uiReducer } from 'entities/UI';
 
 export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    ui: uiReducer
   };
 
   const reducerManager = createReducerManager(rootReducer);

@@ -25,6 +25,8 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
 
+export type SortOrder = 'asc' | 'desc';
+
 export interface Article {
   id: string;
   title: string;
