@@ -6,7 +6,6 @@ import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/Dy
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slices/ArticlesPageSlice';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { useSelector } from 'react-redux';
 import {
   getArticlesPageHasMore,
@@ -16,6 +15,7 @@ import {
 } from '../../model/selectors/getArticlesState';
 import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 
 interface ArticlesPageProps {
   className?: string;
@@ -27,15 +27,16 @@ const reducers: ReducersList = {
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
   const dispatch = useAppDispatch();
-  useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticles({ replace: false }));
-  });
+
   const isLoading = useSelector(getArticlesPageIsLoading);
   const view = useSelector(getArticlesPageView);
   const articles = useSelector(getArticles.selectAll);
   const page = useSelector(getArticlesPageNum);
   const hasMore = useSelector(getArticlesPageHasMore);
+
+  useInitialEffect(() => {
+    dispatch(initArticlesPage());
+  });
   const toggleViewHandler = useCallback(
     (view: ArticleView) => {
       dispatch(articlesPageActions.setView(view));
@@ -49,7 +50,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }
   }, [dispatch, page, hasMore, isLoading]);
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page onScrollEnd={onLoadNextPage} className={classNames(cls.ArticlesPage, {}, [className])}>
         <ArticleViewSelector view={view} onViewClick={toggleViewHandler} />
         <ArticleList articles={articles} isLoading={isLoading} view={view} />

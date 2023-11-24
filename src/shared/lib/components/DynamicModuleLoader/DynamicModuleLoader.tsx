@@ -18,10 +18,15 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
   const dispatch = useDispatch();
   const store = useStore() as ReduxStoreWithManager;
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]) => {
-      store.reducerManager.add(name as StateSchemaKey, reducer);
+    const mountedReducers = store.reducerManager.getMountedReducers();
 
-      dispatch({ type: `@INIT ${name} reducer` });
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      const mounted = mountedReducers[name as StateSchemaKey];
+      if (!mounted) {
+        store.reducerManager.add(name as StateSchemaKey, reducer);
+
+        dispatch({ type: `@INIT ${name} reducer` });
+      }
     });
 
     return () => {

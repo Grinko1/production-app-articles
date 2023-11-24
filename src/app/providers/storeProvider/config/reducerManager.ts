@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
 import { type ReducersMapObject, combineReducers, type AnyAction } from 'redux';
-import { type StateSchemaKey, type StateSchema, type ReducerManager } from './StateSchema';
+import { type StateSchemaKey, type StateSchema, type ReducerManager, type MountedReducers } from './StateSchema';
 import { type Reducer } from '@reduxjs/toolkit';
 
 export function createReducerManager (initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
@@ -12,10 +12,11 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
 
   // An array which is used to delete state keys when reducers are removed
   let keysToRemove: StateSchemaKey[] = [];
+  const mountedReducers: MountedReducers = {};
 
   return {
     getReducerMap: () => reducers,
-
+    getMountedReducers: () => mountedReducers,
     // The root reducer function exposed by this object
     // This will be passed to the store
     reduce: (state: StateSchema, action: AnyAction) => {
@@ -40,6 +41,7 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
 
       // Add the reducer to the reducer mapping
       reducers[key] = reducer;
+      mountedReducers[key] = true;
 
       // Generate a new combined reducer
       combinedReducer = combineReducers(reducers);
@@ -53,6 +55,7 @@ export function createReducerManager (initialReducers: ReducersMapObject<StateSc
 
       // Remove it from the reducer mapping
       delete reducers[key];
+      mountedReducers[key] = false;
 
       // Add the key to the list of keys to clean up
       keysToRemove.push(key);

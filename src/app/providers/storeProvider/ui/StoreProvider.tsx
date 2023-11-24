@@ -9,7 +9,6 @@ interface StoreProviderProps {
   initialState?: DeepPartial<StateSchema>;
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
 }
-
 export const StoreProvider = memo((props: StoreProviderProps) => {
   const { children, initialState, asyncReducers } = props;
   const store = createReduxStore(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>);
